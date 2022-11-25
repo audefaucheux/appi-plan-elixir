@@ -1,0 +1,13 @@
+<h1>Recipes</h1>
+<%= form_for @conn, Routes.recipe_path(@conn, :index), [method: "get"], fn f -> %>
+  <%= text_input f, :search %>
+  <%= submit "Submit" %>
+    <%= if assigns[:result] do %>
+      <h2>List of recipes:</h2>
+      <ul>
+        <%= for recipe <- @result do %>
+        <li><%= recipe.title %></li>
+        <% end %>
+      </ul>
+    <% end %>
+<% end %>
